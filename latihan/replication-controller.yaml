@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-rc-cms
+  labels:
+    number: v2 
+  annotations:
+    annotation-key1: annotation-value1
+spec:
+  replicas: 3
+  selector:
+    app: nginx-cms
+  template:
+    metadata:
+      name: nginx-cms
+      labels:
+        app: nginx-cms
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
